@@ -37,11 +37,9 @@
   </a>
 </p>
  
- 
-- Install [External Plugins](https://github.com/SuhailTechInfo/Secktor-Plugins)
-## Deployment Methods
+
 ---
-1. ***عمل [سكانـQr](https://replit.com/@SuhailTechInfo/Secktor-Md?v=1) | [`SESSION-ID`](https://secktoruserbot.onrender.com/) by scanning QR code. `Whatapp>Three dots>Linked Devices`***
+1. ***عمل [سكانـQr](https://replit.com/@SuhailTechInfo/Secktor-Md?v=1) | [`SESSION-ID`](https://secktoruserbot.onrender.com/) تصوير الكود. `واتساب>المزيد>الاجهزه المرتبطه`***
 2.  ***عمل [`فورك`](https://github.com/SamPandey001/Secktor-MD/fork)***
 3.  ***التنصيب [`على هيريكو`]( https://dashboard.heroku.com/new?template=https://github.com/SuhailTechInfo/Secktor-bot)***
 ##
