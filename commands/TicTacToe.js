@@ -4,8 +4,8 @@
  You may not use this file except in compliance with the License.
  It is supplied in the hope that it may be useful.
  * @project_name : Secktor-Md
- * @author : SuhailTechInfo <https://youtube.com/SuhailTechInfo>
- * @description : Secktor,A Multi-functional whatsapp bot Created by Suhail Tech.
+ * @author : @samapndey001 <https://github.com/SamPandey001>
+ * @description : Secktor,A Multi-functional whatsapp bot.
  * @version 0.0.6
  **/
 
@@ -206,12 +206,6 @@ ${
       if (isWin || isTie) {
         await Void.sendMessage(citel.chat, {
           text: str,
-          buttons: [
-            {
-              buttonId: `${prefix}ttt`,
-              buttonText: { displayText: "Play again" },
-            },
-          ],
           mentions: [room.game.playerO,room.game.playerX],
         });
       } else {
