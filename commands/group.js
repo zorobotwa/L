@@ -16,35 +16,42 @@ const Levels = require("discord-xp");
 const { Sticker, createSticker, StickerTypes } = require("wa-sticker-formatter");
 //---------------------------------------------------------------------------
 cmd({
-            pattern: "ادخل",
+            pattern: "join",
+            desc: "joins group by link",
+            category: "owner",
+            use: '<group link.>',
         },
         async(Void, citel, text,{ isCreator }) => {
             if (!isCreator) return citel.reply(tlang().owner);
-            if (!text) return citel.reply(`֎╎ويـن  الـرابـط ؟ ${tlang().greet}`);
+            if (!text) return citel.reply(`Please give me Query ${tlang().greet}`);
             if (!text.split(" ")[0] && !text.split(" ")[0].includes("whatsapp.com"))
-                citel.reply(" ֎╎الـرابـط غـلـط ");
+                citel.reply("Link Invalid, Please Send a valid whatsapp Group Link!");
             let result = text.split(" ")[0].split("https://chat.whatsapp.com/")[1];
             await Void.groupAcceptInvite(result)
-                .then((res) => citel.reply("تم"))
-                .catch((err) => citel.reply(" ֎╎مـقـدرت ادخـل"));
+                .then((res) => citel.reply("🟩Joined Group"))
+                .catch((err) => citel.reply("Error in Joining Group"));
 
         }
     )
     //---------------------------------------------------------------------------
 cmd({
-            pattern: "ملصق",
-            alias: ["ستكر"],
+            pattern: "sticker",
+            alias: ["s"],
+            desc: "Makes sticker of replied image/video.",
+            category: "group",
+            use: '<reply to any image/video.>',
         },
         async(Void, citel, text) => {
-            if (!citel.quoted) return citel.reply(`֎╎رد  عـلـى صـورة`);
+            if (!citel.quoted) return citel.reply(`*Mention any Image or video Sir.*`);
             let mime = citel.quoted.mtype
             pack = Config.packname
             author = Config.author
             if (citel.quoted) {
                 let media = await citel.quoted.download();
+                citel.reply("*Processing Your request*");
                 let sticker = new Sticker(media, {
-                    pack: citel.pushName, // The pack name
-                    author: "𝙴𝙳𝙸𝚃𝙷 ᪘", // The author name
+                    pack: pack, // The pack name
+                    author: author, // The author name
                     type: text.includes("--crop" || '-c') ? StickerTypes.CROPPED : StickerTypes.FULL,
                     categories: ["🤩", "🎉"], // The sticker category
                     id: "12345", // The sticker id
@@ -55,11 +62,11 @@ cmd({
                 return Void.sendMessage(citel.chat, {sticker: buffer}, {quoted: citel });
             } else if (/video/.test(mime)) {
                 if ((quoted.msg || citel.quoted)
-                    .seconds > 20) return citel.reply("الحد الاقصى للفيد 20 ثانية");
+                    .seconds > 20) return citel.reply("Cannot fetch videos longer than *20 Seconds*");
                 let media = await quoted.download();
                 let sticker = new Sticker(media, {
-                    pack: citel.pushName, // The pack name
-                    author: "", // The author name
+                    pack: pack, // The pack name
+                    author: author, // The author name
                     type: StickerTypes.FULL, // The sticker type
                     categories: ["🤩", "🎉"], // The sticker category
                     id: "12345", // The sticker id
@@ -69,20 +76,22 @@ cmd({
                 const stikk = await sticker.toBuffer();
                 return Void.sendMessage(citel.chat, {  sticker: stikk   }, {    quoted: citel });
             } else {
-                citel.reply("❀╎رد عـلـى صـورة");
+                citel.reply("*Uhh,Please reply to any image or video*");
             }
         }
     )
     //---------------------------------------------------------------------------
 cmd({
-        pattern: "مساعدة",
+        pattern: "support",
+        desc: "Sends official support group link.",
+        category: "group",
         filename: __filename,
     },
     async(Void, citel, text) => {
-        citel.reply(`❀╎ شف خاصك ${tlang().greet}`);
+        citel.reply(`*Check your Pm ${tlang().greet}*`);
         await Void.sendMessage(`${citel.sender}`, {
             image: log0,
-            caption: ` الرابط❀╎ : https://chat.whatsapp.com/EZe0MlgU0xo8GXtkCpqS0M`,
+            caption: `*Group Name: Secktor-Support*\n*Group Link:* https://chat.whatsapp.com/Bl2F9UTVU4CBfZU6eVnrbC`,
         });
 
     }
@@ -358,28 +367,12 @@ cmd({
 *📥 Total Messages* ${ttms}
 *Powered by ${tlang().title}*
 `;
-            const buttonsd = [{
-                    buttonId: `${prefix}rank`,
-                    buttonText: {
-                        displayText: "Rank",
-                    },
-                    type: 1,
-                },
-                {
-                    buttonId: `${prefix}help`,
-                    buttonText: {
-                        displayText: " Help",
-                    },
-                    type: 1,
-                },
-            ];
             let buttonMessage = {
                 image: {
                     url: pfp,
                 },
                 caption: profile,
                 footer: tlang().footer,
-                buttons: buttonsd,
                 headerType: 4,
             };
             Void.sendMessage(citel.chat, buttonMessage, {
@@ -641,22 +634,8 @@ cmd({
                     .then((res) => reply(`Group Chat Unmuted :)`))
                     .catch((err) => console.log(err));
             } else {
-                let buttons = [{
-                        buttonId: `${prefix}group open`,
-                        buttonText: {
-                            displayText: "📍Unmute",
-                        },
-                        type: 1,
-                    },
-                    {
-                        buttonId: `${prefix}group close`,
-                        buttonText: {
-                            displayText: "📍Mute",
-                        },
-                        type: 1,
-                    },
-                ];
-                await Void.sendButtonText(citel.chat, buttons, `Group Mode`, Void.user.name, citel);
+
+                return citel.reply(`Group Mode:\n${prefix}group open- to open\n${prefix}group close- to close`);
             }
         }
     )
@@ -693,8 +672,12 @@ cmd({
     )
     //---------------------------------------------------------------------------
 cmd({
-            pattern: "مخفي",
+            pattern: "hidetag",
+            alias: ["htag"],
+            desc: "Tags everyperson of group without mentioning their numbers",
+            category: "group",
             filename: __filename,
+            use: '<text>',
         },
         async(Void, citel, text) => {
             if (!citel.isGroup) return citel.reply(tlang().group);
