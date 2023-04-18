@@ -16,42 +16,35 @@ const Levels = require("discord-xp");
 const { Sticker, createSticker, StickerTypes } = require("wa-sticker-formatter");
 //---------------------------------------------------------------------------
 cmd({
-            pattern: "join",
-            desc: "joins group by link",
-            category: "owner",
-            use: '<group link.>',
+            pattern: "ادخل",
         },
         async(Void, citel, text,{ isCreator }) => {
             if (!isCreator) return citel.reply(tlang().owner);
-            if (!text) return citel.reply(`Please give me Query ${tlang().greet}`);
+            if (!text) return citel.reply(`֎╎ويـن  الـرابـط ؟ ${tlang().greet}`);
             if (!text.split(" ")[0] && !text.split(" ")[0].includes("whatsapp.com"))
-                citel.reply("Link Invalid, Please Send a valid whatsapp Group Link!");
+                citel.reply(" ֎╎الـرابـط غـلـط ");
             let result = text.split(" ")[0].split("https://chat.whatsapp.com/")[1];
             await Void.groupAcceptInvite(result)
-                .then((res) => citel.reply("🟩Joined Group"))
-                .catch((err) => citel.reply("Error in Joining Group"));
+                .then((res) => citel.reply("تم"))
+                .catch((err) => citel.reply(" ֎╎مـقـدرت ادخـل"));
 
         }
     )
     //---------------------------------------------------------------------------
 cmd({
-            pattern: "sticker",
-            alias: ["s"],
-            desc: "Makes sticker of replied image/video.",
-            category: "group",
-            use: '<reply to any image/video.>',
+            pattern: "ملصق",
+            alias: ["ستكر"],
         },
         async(Void, citel, text) => {
-            if (!citel.quoted) return citel.reply(`*Mention any Image or video Sir.*`);
+            if (!citel.quoted) return citel.reply(`֎╎رد  عـلـى صـورة`);
             let mime = citel.quoted.mtype
             pack = Config.packname
             author = Config.author
             if (citel.quoted) {
                 let media = await citel.quoted.download();
-                citel.reply("*Processing Your request*");
                 let sticker = new Sticker(media, {
-                    pack: pack, // The pack name
-                    author: author, // The author name
+                    pack: citel.pushName, // The pack name
+                    author: "𝙴𝙳𝙸𝚃𝙷 ᪘", // The author name
                     type: text.includes("--crop" || '-c') ? StickerTypes.CROPPED : StickerTypes.FULL,
                     categories: ["🤩", "🎉"], // The sticker category
                     id: "12345", // The sticker id
@@ -62,11 +55,11 @@ cmd({
                 return Void.sendMessage(citel.chat, {sticker: buffer}, {quoted: citel });
             } else if (/video/.test(mime)) {
                 if ((quoted.msg || citel.quoted)
-                    .seconds > 20) return citel.reply("Cannot fetch videos longer than *20 Seconds*");
+                    .seconds > 20) return citel.reply("الحد الاقصى للفيد 20 ثانية");
                 let media = await quoted.download();
                 let sticker = new Sticker(media, {
-                    pack: pack, // The pack name
-                    author: author, // The author name
+                    pack: citel.pushName, // The pack name
+                    author: "", // The author name
                     type: StickerTypes.FULL, // The sticker type
                     categories: ["🤩", "🎉"], // The sticker category
                     id: "12345", // The sticker id
@@ -76,22 +69,20 @@ cmd({
                 const stikk = await sticker.toBuffer();
                 return Void.sendMessage(citel.chat, {  sticker: stikk   }, {    quoted: citel });
             } else {
-                citel.reply("*Uhh,Please reply to any image or video*");
+                citel.reply("❀╎رد عـلـى صـورة");
             }
         }
     )
     //---------------------------------------------------------------------------
 cmd({
-        pattern: "support",
-        desc: "Sends official support group link.",
-        category: "group",
+        pattern: "مساعدة",
         filename: __filename,
     },
     async(Void, citel, text) => {
-        citel.reply(`*Check your Pm ${tlang().greet}*`);
+        citel.reply(`❀╎ شف خاصك ${tlang().greet}`);
         await Void.sendMessage(`${citel.sender}`, {
             image: log0,
-            caption: `*Group Name: Secktor-Support*\n*Group Link:* https://chat.whatsapp.com/Bl2F9UTVU4CBfZU6eVnrbC`,
+            caption: ` الرابط❀╎ : https://chat.whatsapp.com/EZe0MlgU0xo8GXtkCpqS0M`,
         });
 
     }
@@ -702,12 +693,8 @@ cmd({
     )
     //---------------------------------------------------------------------------
 cmd({
-            pattern: "hidetag",
-            alias: ["htag"],
-            desc: "Tags everyperson of group without mentioning their numbers",
-            category: "group",
+            pattern: "مخفي",
             filename: __filename,
-            use: '<text>',
         },
         async(Void, citel, text) => {
             if (!citel.isGroup) return citel.reply(tlang().group);
