@@ -35,7 +35,7 @@ cmd({
     )
     //---------------------------------------------------------------------------
 cmd({
-            pattern: "sticker",
+            pattern: "ملصق",
             alias: ["s"],
             desc: "Makes sticker of replied image/video.",
             category: "group",
@@ -82,7 +82,7 @@ cmd({
     )
     //---------------------------------------------------------------------------
 cmd({
-        pattern: "support",
+        pattern: "مساعده",
         desc: "Sends official support group link.",
         category: "group",
         filename: __filename,
@@ -91,7 +91,7 @@ cmd({
         citel.reply(`*Check your Pm ${tlang().greet}*`);
         await Void.sendMessage(`${citel.sender}`, {
             image: log0,
-            caption: `*Group Name: Secktor-Support*\n*Group Link:* https://chat.whatsapp.com/Bl2F9UTVU4CBfZU6eVnrbC`,
+            caption: `*Group Name: Raizel-Support*\n*Group Link:* https://chat.whatsapp.com/EZe0MlgU0xo8GXtkCpqS0M`,
         });
 
     }
@@ -154,7 +154,7 @@ cmd({
 
     //---------------------------------------------------------------------------
 cmd({
-        pattern: "tagall",
+        pattern: "منشن",
         desc: "Tags every person of group.",
         category: "group",
         filename: __filename,
@@ -168,13 +168,13 @@ cmd({
         if (!isAdmins) return citel.reply(tlang().admin);
 
         let textt = `
-══✪〘   *Tag All*   〙✪══
+══✪〘   *منشن جماعي*   〙✪══
 
-➲ *Message :* ${text ? text : "blank"}\n\n
-➲ *Author:* ${citel.pushName} 🔖
+➲ *الرساله :* ${text ? text : "بدون"}\n\n
+➲ *الطالب:* ${citel.pushName} 🔖
 `
         for (let mem of participants) {
-            textt += `📍 @${mem.id.split("@")[0]}\n`;
+            textt += `💧 @${mem.id.split("@")[0]}\n`;
         }
         Void.sendMessage(citel.chat, {
             text: textt,
@@ -672,7 +672,7 @@ cmd({
     )
     //---------------------------------------------------------------------------
 cmd({
-            pattern: "hidetag",
+            pattern: "مخفي",
             alias: ["htag"],
             desc: "Tags everyperson of group without mentioning their numbers",
             category: "group",
