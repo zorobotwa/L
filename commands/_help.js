@@ -52,37 +52,37 @@ Secktor.cmd({
                     .locale('id')
                 const date = moment.tz('asia/karachi').format('DD/MM/YYYY')
                 let total = await sck1.countDocuments()
-                let str = `╭────《 ` + fancytext('SUHAIL-MD'[0], 50) + ` 》─────⊷\n`
-                str +=
-                    '' + `│ ╭───────✧❁✧───────«
-│ │ User:- ${citel.pushName}
-│ │ Theme:- ${tlang().title}
-│ │ Prefix:- [ ${prefix} ]
-│ │ Owner:- ${Config.ownername}
-│ │ Plugins:- ${commands.length}
-│ │ Users:- ${total}
-│ │ Uptime:- ${runtime(process.uptime())}
-│ │ Mem:- ${formatp(os.totalmem() - os.freemem())}/${formatp(os.totalmem())}
-│ │ Time:- ${time}
-│ │ Date:- ${date}
-│ │ Ytube : youtube.com/c/SuhailTechInfo
-│ ╰───────✧❁✧───────»
-╰───────────────⊷\n
-` + ''
-                str += `╭───『 ` + fancytext('Commands', 57) + `』──◆`
-                for (const category in cmds) {
-                    str += `
-┃  ╭───────✧❁✧───────«
-┃  │ ✯---- ${tiny(category)} ----⦿
-┃  ╰┬──────✧❁✧───────»
-┃  ┌┤\n`
-                    for (const plugins of cmds[category]) {
-                        str += `┃  │ ✭ ${plugins}\n`
-                    }
-                    str += `┃  ╰─────────────◆`
-                }
-
-                str += `\n╰━━━━━━━━━━━──⊷\nsᴜʜᴀɪʟ ᴛᴇᴄʜ ɪɴғᴏ \n www.youtube.com/c/SuhailTechInfo`
+                let str = `*❒═━═「𝚁𝙰𝙸𝚉𝙴𝙻」═━═❒*
+*⧉┆مرحبا ياصديقي ⤌⤈*    
+*•| ⊱.⊰ |•*
+*⧉┆انا بوت واتس اسمي*
+•| ⊱𝑅𝐴𝐼𝑍𝐸𝐿_𝐵𝑂𝑇𖤊⊰ |•
+•➥┆ اعمل في الخاص والقروبات
+•➥┆ وظيفتي هي حماية قروبك
+•➥┆ اكتب كلمه *.الاوامر* 
+•➥┆ لمعرفة اوامـــــر البوت  
+•➥┆ مميزات البوت كثيره جدا 
+•➥┆ ويعمل بجودة فائقه وعاليه
+*❒═━═「𝚁𝙰𝙸𝚉𝙴𝙻」═━═❒*
+*✦┃الدعم:* 
+*「   https://chat.whatsapp.com/EZe0MlgU0xo8GXtkCpqS0M  」*
+*❒═━═「𝚁𝙰𝙸𝚉𝙴𝙻」═━═❒*
+*⺀اوامر بوت رايزل⺀*
+*❒═━═「𝚁𝙰𝙸𝚉𝙴𝙻」═━═❒*
+*┇.ملصق┇↜⟬ لصناعة ملصق ⟭.*
+*┇.اكس┇↜⟬ لعبة اكس او ⟭*
+*┇.م3┇↜⟬ اوامر القروبات ⟭*
+*┇.م4┇↜⟬ اوامر البحث والتنريل ⟭*
+*┇.م5┇↜⟬ اوامر التحميل ⟭*
+*┇.م6┇↜⟬ اوامر تغيير الصوت ⟭*
+*┇.م7┇↜⟬ اوامر التسليه ⟭*
+*┇.م8┇↜⟬ لعرض جميع الأوامر ⟭*
+*❒═━═「𝚁𝙰𝙸𝚉𝙴𝙻」═━═❒*
+「 .المميزات 」┆لعرض مميزات البوت
+「 .المطور 」┆لعرض مطور البوت
+「 .السورس 」┆لعرض المبرمج
+*❒═━═「𝚁𝙰𝙸𝚉𝙴𝙻」═━═❒*
+𝑅𝐴𝐼𝑍𝐸𝐿_𝐵𝑂𝑇𖤊`
 
                 let buttonMessaged = {
                     image: { url: await botpic() },
