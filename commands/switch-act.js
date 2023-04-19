@@ -1,9 +1,21 @@
+/**
+ Copyright (C) 2022.
+ Licensed under the  GPL-3.0 License;
+ You may not use this file except in compliance with the License.
+ It is supplied in the hope that it may be useful.
+ * @project_name : Secktor-Md
+ * @author : SamPandey001 <https://github.com/SamPandey001>
+ * @description : Secktor,A Multi-functional whatsapp bot.
+ * @version 0.0.6
+ **/
 
 const { cmd,sck,sck1, getAdmin, tlang, prefix } = require('../lib')
 const Config = require('../config')
     //---------------------------------------------------------------------------
 cmd({
-        pattern: "شغل",
+        pattern: "act",
+        desc: "Switches for varios works.",
+        category: "group",
         filename: __filename,
     },
     async(Void, citel, text,{ isCreator }) => {
@@ -14,9 +26,9 @@ cmd({
         const isBotAdmins = citel.isGroup ? groupAdmins.includes(botNumber) : false;
         const isAdmins = citel.isGroup ? groupAdmins.includes(citel.sender) : false;
         //-----------------------------------------
-        if (!citel.isGroup) return citel.reply("هذا الامر خاص بالقروب")
-        if (!text) return citel.reply(`اختر وش تبي تشغل\n1-الاحداث\n2-البنك\n3-مضاد_روابط`)
-        if (!isAdmins) return citel.reply("هذا الامر خاص بالمشرفين")
+        if (!citel.isGroup) return citel.reply("This command is only for group")
+        if (!text) return citel.reply(`❌ Please provide me term like like\n1-events\n2-antilink\n3-nsfw\n4-cardgame\n5-bot`)
+        if (!isAdmins) return citel.reply("❌ This command is only for admin")
         switch (text.split(" ")[0]) {
             case 'antilink':
                 {
@@ -24,48 +36,77 @@ cmd({
                     if (!checkgroup) {
                         await new sck({ id: citel.chat, antilink: "true" })
                             .save()
-                        return citel.reply('تم تشغيل مضاد الروابط')
+                        return citel.reply(' Antilink Enabled Successfully')
                     } else {
-                        if (checkgroup.antilink == "true") return citel.reply("شغال مسبقا")
+                        if (checkgroup.antilink == "true") return citel.reply("Antilink was alredy  enabled here.")
                         await sck.updateOne({ id: citel.chat }, { antilink: "true" })
-                        citel.reply('تم تشغيل مضاد الروابط')
+                        citel.reply('Enabled antilink in current chat.')
                         return
                     }
                 }
                 break
           
-                      case 'البنك':
+                      case 'economy':
                 {
                     let checkgroup = await sck.findOne({ id: citel.chat })
                     if (!checkgroup) {
                         await new sck({ id: citel.chat, economy: "true" })
                             .save()
-                        return citel.reply('تم تشغيل البنك')
+                        return citel.reply(' Economy Enabled Successfully')
                     } else {
-                        if (checkgroup.economy == "true") return citel.reply("شغال مسبقا")
+                        if (checkgroup.economy == "true") return citel.reply("Economy was alredy enabled.")
                         await sck.updateOne({ id: citel.chat }, { economy: "true" })
-                        citel.reply('تم تشغيل البنك')
+                        citel.reply('Economy enabled in current chat.')
                         return
                     }
                 }
                 break
-            case 'الاحداث':
+            case 'events':
                 {
                     let checkgroup = await sck.findOne({ id: citel.chat })
                     if (!checkgroup) {
                         await new sck({ id: citel.chat, events: "true" })
                             .save()
-                        return citel.reply("تم تشغيل الأحداث")
+                        return citel.reply("Successfully Enabled *Events*")
                     } else {
-                        if (checkgroup.events == "true") return citel.reply("شغال مسبقا")
+                        if (checkgroup.events == "true") return citel.reply("*Events* are already enabled")
                         await sck.updateOne({ id: citel.chat }, { events: "true" })
-                        return citel.reply("تم تشغيل الأحداث")
+                        return citel.reply("Successfully Enabled *Events*")
+                    }
+                }
+                break
+            case 'cardgame':
+                {
+                    let checkgroup = sck.findOne({ id: citel.chat })
+                    if (!checkgroup) {
+                        await new sck({ id: citel.chat, cardgame: "active" })
+                            .save()
+                        return citel.reply("Successfully Enabled *Card Game*")
+                    } else {
+                        if (checkgroup.cardgame == "active") return citel.reply("*Card Game* was already enabled")
+                        await sck.updateOne({ id: citel.chat }, { cardgame: "active" })
+                        return citel.reply("Successfully Enabled *Card Game.*")
+                    }
+                }
+                break
+            case 'nsfw':
+                {
+                    let checkgroup = await sck.findOne({ id: citel.chat })
+                    if (!checkgroup) {
+                        await new sck({ id: citel.chat, nsfw: "true" })
+                            .save()
+                        return citel.reply("Successfully Enabled *NSFW*")
+                    } else {
+                        if (checkgroup.nsfw == "true") return citel.reply("*NSFW* is already enabled")
+                        await sck.updateOne({ id: citel.chat }, { nsfw: "true" })
+                        citel.reply("Successfully Enabled *NSFW*")
+                        return
                     }
                 }
                 break
             default:
                 {
-                    citel.reply("اختر وش تبي تشغل\n1-الاحداث\n2-البنك\n3-مضاد_روابط")
+                    citel.reply("Please provide me term like.\n1-events\n2-antilink\n3-nsfw\n4-economy")
                 }
         }
     }
