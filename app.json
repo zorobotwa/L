@@ -1,8 +1,8 @@
 {
-  "name": "RAIZEL_BOT",
+  "name": "zoro_bot",
   "description": "A Whatsapp md bot built in NodeJs to make experience better\n\t if Any Problem : www.youtube.com/c/SuhailTechInfo",
-  "logo": "https://telegra.ph/file/eab1513c262f8b276a2c5.jpg",
-  "keywords": ["nodejs", "bot", "whatsapp bot", "Zero-Two", "SecktorBot", "Secktor","SecktorMD","theme bot","multi device"],
+  "logo": "https://i.postimg.cc/MpQ4FRsB/IMG-20230428-WA0196.jpg",
+  "keywords": ["nodejs", "bot", "whatsapp bot", "zoro", "SecktorBot", "Secktor","SecktorMD","theme bot","multi device"],
   "success_url": "/",
   "stack": "container",
 "env": {
@@ -12,12 +12,12 @@
   },
   "ALIVE_MESSAGE": {
     "description": "Alive message for bot",
-     "value": "•.•:•.•:•:•:•:•:•:•:•☾☼☽•:•.•:•.•:•:•:•:•:•:•\nمرحبا انا بوت رايزل\n•.•:•.•:•:•:•:•:•:•:•☾☼☽•:•.•:•.•:•:•:•:•:•:•\n\n*ι البوت متصل الان* \n*Cʀєαтєԃ вყ : raizel *\n\nWhatsapp : wa.me/967770500831 \n Subscribe: https://chat.whatsapp.com/EZe0MlgU0xo8GXtkCpqS0M",
+     "value": "•.•:•.•:•:•:•:•:•:•:•☾☼☽•:•.•:•.•:•:•:•:•:•:•\nمرحبا انا بوت زورو\n•.•:•.•:•:•:•:•:•:•:•☾☼☽•:•.•:•.•:•:•:•:•:•:•\n\n*ι البوت متصل الان* \n*Cʀєαтєԃ вყ : raizel *\n\nWhatsapp : wa.me/9647506091598 \n Subscribe: https://chat.whatsapp.com/EwCh9XrjxmY68GeO8oVmMp",
      "required" :false
     },
    "THUMB_IMAGE": {
     "description": "THUMBNAIL for bot.",
-     "value": "https://i.imgur.com/NpA3ZsJ.jpeg"
+     "value": "https://i.postimg.cc/MpQ4FRsB/IMG-20230428-WA0196.jpg"
     },
     "ANTI_BAD_WORD": {
     "description": "Put words here. If you want it enabled in your bot otherwise leave it blank",
@@ -55,7 +55,7 @@
   },
   "OWNER_NUMBER": {
     "description": "The phone numbers of the users who you want to be admin for the bot (should be in international format without + and multiple numbers must be separated by a comma \",\")",
-       "value": "967770500831"
+       "value": "9647506091598"
   },
    "SESSION_ID": {
     "description": "Please put your SESSION_ID here,if you don't have visit\nhttps://replit.com/@SuhailTechInfo/Secktor-Md "
@@ -76,7 +76,7 @@
   },
     "THEME": {
     "description": "Put the theme name you want to use. Avilable themes are SECKTOR,ZEROTWO,NEZUKO,LUFFY,GOKU and many more..",
-     "value": "RAIZEL"
+     "value": "zoro"
   },
     "WORKTYPE": {
   "description": "Worktype of your bot. Use public or private, if it is private then only bot number can use it. If public then everyone can use it.",
@@ -89,7 +89,7 @@
   },
   "PACK_INFO": {
     "description": "Put packname;authorname.",
-     "value": "; 𝐑𝐀𝐈𝐙𝐄𝐋_𝐁𝐎𝐓 _𝐆𝐄𝐎𝐑𝐉𝐄⃤",
+     "value": ";",
      "required": false 
   }
 },
